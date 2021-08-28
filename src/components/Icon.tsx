@@ -1,7 +1,7 @@
 import React from 'react';
 import {Icon as IconBase, IconProps} from 'react-native-magnus';
 
-const Icon: React.FC<IconProps> = props => {
+const Icon = (props: IconProps) => {
   return <IconBase {...props} fontFamily="FontAwesome5" />;
 };
 
