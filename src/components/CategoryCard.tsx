@@ -2,7 +2,7 @@ import {useNavigation} from '@react-navigation/core';
 import {StackNavigationProp} from '@react-navigation/stack';
 import React from 'react';
 import {TouchableOpacity} from 'react-native';
-import {Button, Div, Image} from 'react-native-magnus';
+import {Div, Image, Text} from 'react-native-magnus';
 import {RootStackParamList} from '../../App';
 import {Category} from '../types/Category';
 
@@ -15,23 +15,30 @@ type ListBookScreenNavigationProp = StackNavigationProp<
   'ListBooks'
 >;
 
-const CategoryCard = ({item: {name, image}}: PROPS) => {
+const CategoryCard = ({item}: PROPS) => {
   const navigation = useNavigation<ListBookScreenNavigationProp>();
+
+  const {name, image} = item;
 
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate('ListBooks', {category: name})}>
+      onPress={() => navigation.navigate('ListBooks', {category: item})}>
       <Div w={130} m={'xs'}>
         <Image h={100} source={image} roundedTop={'md'} />
-        <Button
-          w={'100%'}
+        <Text
+          h={45}
           py={'xs'}
           roundedTop={0}
           roundedBottom={'md'}
           fontWeight={'bold'}
-          fontSize={'md'}>
+          fontSize={'sm'}
+          bg={'blue600'}
+          color={'white'}
+          p={'md'}
+          textAlign={'center'}
+          numberOfLines={2}>
           {name}
-        </Button>
+        </Text>
       </Div>
     </TouchableOpacity>
   );

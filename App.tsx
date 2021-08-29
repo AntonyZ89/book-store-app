@@ -9,22 +9,29 @@
  */
 
 import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+import {createStackNavigator, StackHeaderProps} from '@react-navigation/stack';
 import React from 'react';
 
-import {StatusBar, ThemeProvider} from 'react-native-magnus';
+import {Button, Header, StatusBar, ThemeProvider} from 'react-native-magnus';
 import App from './src/App';
 import {CartProvider} from './src/context/CartContext';
 import {ListBooks} from './src/pages';
+import {CartIcon, Icon} from './src/components';
+import Cart from './src/pages/Cart';
+import {Category} from './src/types/Category';
+import {RouteProp} from '@react-navigation/core';
 
 export type RootStackParamList = {
   App: undefined;
-  ListBooks: {
-    category: string;
+  ListBooks?: {
+    category: Category;
   };
+  Cart: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
+
+type ListBookScreenRouteProp = RouteProp<RootStackParamList, 'ListBooks'>;
 
 const Main: React.FC = () => {
   return (
@@ -34,9 +41,67 @@ const Main: React.FC = () => {
         <NavigationContainer>
           <Stack.Navigator
             initialRouteName={'App'}
-            screenOptions={{headerShown: false}}>
-            <Stack.Screen name="App" component={App} />
-            <Stack.Screen name="ListBooks" component={ListBooks} />
+            screenOptions={{
+              header: ({route, navigation}) => {
+                return (
+                  <Header
+                    prefix={
+                      <Button
+                        bg={'transparent'}
+                        onPress={() => navigation.goBack()}>
+                        <Icon fontSize={'lg'} name={'arrow-left'} />
+                      </Button>
+                    }
+                    suffix={<CartIcon />}>
+                    {route.name}
+                  </Header>
+                );
+              },
+            }}>
+            <Stack.Screen
+              options={{headerShown: false}}
+              name="App"
+              component={App}
+            />
+
+            <Stack.Screen
+              name={'ListBooks'}
+              component={ListBooks}
+              options={{
+                header: ({route, navigation}) => (
+                  <Header
+                    prefix={
+                      <Button
+                        bg={'transparent'}
+                        onPress={() => navigation.goBack()}>
+                        <Icon fontSize={'lg'} name={'arrow-left'} />
+                      </Button>
+                    }>
+                    {/** @ts-ignore FIXME */}
+                    {route.params?.category?.name || 'Livros'}
+                  </Header>
+                ),
+              }}
+            />
+
+            <Stack.Screen
+              options={{
+                header: ({navigation}) => (
+                  <Header
+                    prefix={
+                      <Button
+                        bg={'transparent'}
+                        onPress={() => navigation.goBack()}>
+                        <Icon fontSize={'lg'} name={'arrow-left'} />
+                      </Button>
+                    }>
+                    Carrinho
+                  </Header>
+                ),
+              }}
+              name={'Cart'}
+              component={Cart}
+            />
           </Stack.Navigator>
         </NavigationContainer>
       </CartProvider>

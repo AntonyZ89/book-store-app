@@ -1,17 +1,28 @@
 import React from 'react';
-import {TouchableOpacity} from 'react-native';
+import {Alert, TouchableOpacity} from 'react-native';
 import {Div, Image, Text} from 'react-native-magnus';
 import {NumberFormat} from '.';
+import {useCart} from '../context/CartContext';
 import {Book} from '../types/Book';
 
 type PROPS = {
   item: Book;
 };
 
-const BookCard = ({item: {name, image, price}}: PROPS) => {
+const BookCard = ({item}: PROPS) => {
+  const {name, image, price} = item;
+
+  const {add} = useCart();
+
+  async function addToCart() {
+    add(item);
+
+    Alert.alert('Carrinho', `${name} adicionado ao carrinho.`);
+  }
+
   return (
     <Div m={'xs'} w={160} flex={0.5}>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={addToCart}>
         <Image height={150} source={image} roundedTop={'md'} />
         <Text
           w={'100%'}

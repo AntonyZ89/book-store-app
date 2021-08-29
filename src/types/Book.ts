@@ -3,5 +3,6 @@ export type Book = {
   name: string;
   price: number;
   image: any;
+  category_id: number;
   description: string;
 };
