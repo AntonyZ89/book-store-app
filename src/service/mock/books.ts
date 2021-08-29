@@ -1,5 +1,5 @@
 import images from '../../assets/images';
-import {Book} from '../../types/Book';
+import {Book} from '../../types';
 
 const books: Book[] = [
   {

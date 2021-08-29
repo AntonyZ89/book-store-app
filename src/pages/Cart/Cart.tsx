@@ -2,10 +2,10 @@ import React from 'react';
 import {FlatList} from 'react-native';
 import {Button, Div, Host, Text} from 'react-native-magnus';
 import {CartItemCard, Hr, NumberFormat} from '../../components';
-import {CartItem} from '../../types/CartItem';
+import {Book} from '../../types';
 
 type PROPS = {
-  items: CartItem[];
+  items: Book[];
   total: number;
 };
 

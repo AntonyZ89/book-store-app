@@ -3,14 +3,14 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 import {Div, Image, Text} from 'react-native-magnus';
 import {Icon, NumberFormat} from '.';
 import {useCart} from '../context/CartContext';
-import {CartItem} from '../types/CartItem';
+import {Book} from '../types';
 
 type PROPS = {
-  item: CartItem;
+  item: Book;
 };
 
 const CartItemCard = ({item}: PROPS) => {
-  const {id, image, name, price, count} = item;
+  const {id, image, name, price, count = 1} = item;
 
   const {add, remove} = useCart();
 

@@ -3,7 +3,7 @@ import {Alert, TouchableOpacity} from 'react-native';
 import {Div, Image, Text} from 'react-native-magnus';
 import {NumberFormat} from '.';
 import {useCart} from '../context/CartContext';
-import {Book} from '../types/Book';
+import {Book} from '../types';
 
 type PROPS = {
   item: Book;
@@ -15,7 +15,7 @@ const BookCard = ({item}: PROPS) => {
   const {add} = useCart();
 
   async function addToCart() {
-    add(item);
+    await add(item);
 
     Alert.alert('Carrinho', `${name} adicionado ao carrinho.`);
   }

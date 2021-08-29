@@ -1,15 +1,16 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, {createContext, useContext, useEffect, useState} from 'react';
-import {Alert} from 'react-native';
-import {Book} from '../types/Book';
-import {CartItem} from '../types/CartItem';
+import {Book} from '../types';
+import sleep from '../utils/sleep';
+import {useModal} from './ModalContext';
 
 type CONTEXT_PROPS = {
   count: number;
-  items: CartItem[];
+  items: Book[];
   total: number;
   add: (book: Book) => void;
   remove: (id: number) => void;
+  clean: () => void;
 };
 
 const init: CONTEXT_PROPS = {
@@ -18,34 +19,50 @@ const init: CONTEXT_PROPS = {
   total: 0,
   add: () => {},
   remove: (_id: number) => {},
+  clean: () => {},
 };
 
 const CartContext = createContext(init);
 
 const CartProvider: React.FC = ({children}) => {
-  const [items, setItems] = useState<CartItem[]>([]);
+  const [items, setItems] = useState<Book[]>([]);
   const [count, setCount] = useState(0);
   const [total, setTotal] = useState(0);
   const [rerender, setRerender] = useState(false);
 
+  const {setLoading} = useModal();
+
   useEffect(() => {
-    load();
+    AsyncStorage.getItem('@cart').then(cart => {
+      setItems(JSON.parse(cart || '[]'));
+    });
   }, []);
 
   useEffect(() => {
-    sync();
+    AsyncStorage.setItem('@cart', JSON.stringify(items));
+
+    let sum = 0;
+
+    items.forEach(i => (sum += i.price * (i.count as number)));
+
+    setTotal(sum);
+    setCount(items.length);
   }, [items, rerender]);
 
   async function add(book: Book) {
     const item = items.find(i => i.id === book.id);
 
+    setLoading(true);
+    await sleep(1);
+
     if (item) {
       item.count ? item.count++ : (item.count = 1);
     } else {
-      book.count = 1; // FIXME fix type
+      book.count = 1;
       items.push(book);
     }
 
+    setLoading(false);
     setRerender(!rerender);
   }
 
@@ -56,7 +73,7 @@ const CartProvider: React.FC = ({children}) => {
       return;
     }
 
-    item.count--;
+    (item.count as number)--;
 
     if (item.count) {
       setItems(items);
@@ -69,25 +86,12 @@ const CartProvider: React.FC = ({children}) => {
     }
   }
 
-  async function sync() {
-    await AsyncStorage.setItem('@cart', JSON.stringify(items));
-
-    let sum = 0;
-
-    items.forEach(i => (sum += i.price * i.count));
-
-    setTotal(sum);
-    setCount(items.length);
-  }
-
-  async function load() {
-    const cart = JSON.parse((await AsyncStorage.getItem('@cart')) || '[]');
-
-    setItems(cart);
+  function clean() {
+    setItems([]);
   }
 
   return (
-    <CartContext.Provider value={{items, count, total, add, remove}}>
+    <CartContext.Provider value={{items, count, total, add, remove, clean}}>
       {children}
     </CartContext.Provider>
   );
