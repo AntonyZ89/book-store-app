@@ -10,7 +10,7 @@ type CONTEXT_PROPS = {
   total: number;
   add: (book: Book) => void;
   remove: (id: number) => void;
-  clean: () => void;
+  clear: () => void;
 };
 
 const init: CONTEXT_PROPS = {
@@ -19,7 +19,7 @@ const init: CONTEXT_PROPS = {
   total: 0,
   add: () => {},
   remove: (_id: number) => {},
-  clean: () => {},
+  clear: () => {},
 };
 
 const CartContext = createContext(init);
@@ -86,12 +86,12 @@ const CartProvider: React.FC = ({children}) => {
     }
   }
 
-  function clean() {
+  function clear() {
     setItems([]);
   }
 
   return (
-    <CartContext.Provider value={{items, count, total, add, remove, clean}}>
+    <CartContext.Provider value={{items, count, total, add, remove, clear}}>
       {children}
     </CartContext.Provider>
   );

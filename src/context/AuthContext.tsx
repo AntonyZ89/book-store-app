@@ -29,7 +29,7 @@ const AuthContext = createContext<CONTEXT_PROPS>(init);
 const AuthProvider: React.FC = ({children}) => {
   const [user, setUser] = useState<User>();
   const [signed, setSigned] = useState<boolean>(false);
-  const {clean} = useCart();
+  const {clear} = useCart();
 
   const navigation = useNavigation<MainScreenNavigationProp>();
 
@@ -60,7 +60,7 @@ const AuthProvider: React.FC = ({children}) => {
   }
 
   function logout() {
-    clean();
+    clear();
     setUser(undefined);
     setSigned(false);
   }

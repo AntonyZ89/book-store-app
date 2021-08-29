@@ -1,7 +1,8 @@
 import React from 'react';
-import {FlatList} from 'react-native';
+import {Alert, FlatList} from 'react-native';
 import {Button, Div, Host, Text} from 'react-native-magnus';
 import {CartItemCard, Hr, NumberFormat} from '../../components';
+import {useCart} from '../../context/CartContext';
 import {Book} from '../../types';
 
 type PROPS = {
@@ -10,6 +11,17 @@ type PROPS = {
 };
 
 const Cart = ({items, total}: PROPS) => {
+  const {clear} = useCart();
+
+  function checkout() {
+    clear();
+
+    Alert.alert(
+      'Sucesso!',
+      `Compra no valor de ${total} finalizada com sucesso.`,
+    );
+  }
+
   return (
     <>
       <Host>
@@ -30,7 +42,7 @@ const Cart = ({items, total}: PROPS) => {
           </Div>
         </Div>
       </Host>
-      <Button block m={'md'} bg={'indigo400'}>
+      <Button block m={'md'} bg={'indigo400'} onPress={checkout}>
         Finalizar compra
       </Button>
     </>
