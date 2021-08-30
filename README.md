@@ -8,10 +8,26 @@
 A Book Store app builded with <b>React Native Magnus</b> components
 </p>
 
+<p valign="top" align="center">
+  <img valign="middle" src="docs/assets/screenshot/LoginScreen.png" width="19%" />
+  <img valign="middle" src="docs/assets/screenshot/HomeScreen.png" width="19%" />
+  <img valign="middle" src="docs/assets/screenshot/BookListScreen.png" width="19%" />
+  <img valign="middle" src="docs/assets/screenshot/HomeDrawer.png" width="19%" />
+  <img valign="middle" src="docs/assets/screenshot/CartScreen.png" width="19%" />
+</p>
 
+- TypeScript
+- [React Native Magnus](https://github.com/jsartisan/react-native-magnus) components
+- [AsyncStorage](https://github.com/react-native-community/async-storage) for store **Cart** and **Auth** Contexts data
+- [React Navigation](https://reactnavigation.org/) (**v6**) for navigation.
+- [Formik](https://formik.org/docs/overview) for create forms easily and conveniently
+- [Yup](https://github.com/jquense/yup) for validate form data
+- [React Native Vector Icons](https://github.com/oblador/react-native-vector-icons) for Icons
+
+
+## DIRECTORY STRUCTURE
 ---
 
-# DIRECTORY STRUCTURE
 ```
 ├───src
 │   │   App.tsx
@@ -41,17 +57,6 @@ A Book Store app builded with <b>React Native Magnus</b> components
 │  README.md
 │  tsconfig.json
 ```
-## Usage
----
-
-- TypeScript
-- [React Native Magnus](https://github.com/jsartisan/react-native-magnus)
-- [AsyncStorage](https://github.com/react-native-community/async-storage) for store **Cart** and **Auth** Contexts data
-- [React Navigation](https://reactnavigation.org/) (**v6**) for navigation.
-- [Formik](https://formik.org/docs/overview) for create forms on a easy way
-- [Yup](https://github.com/jquense/yup) for validate form data
-- [React Native Vector Icons](https://github.com/oblador/react-native-vector-icons) for Icons
-
 
 ## Installation
 ---
