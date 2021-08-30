@@ -25,20 +25,24 @@ const CategoryCard = ({item}: PROPS) => {
       onPress={() => navigation.navigate('ListBooks', {category: item})}>
       <Div w={130} m={'xs'}>
         <Image h={100} source={image} roundedTop={'md'} />
-        <Text
-          h={45}
-          py={'xs'}
-          roundedTop={0}
-          roundedBottom={'md'}
-          fontWeight={'bold'}
-          fontSize={'sm'}
+        <Div
           bg={'blue600'}
-          color={'white'}
           p={'md'}
-          textAlign={'center'}
-          numberOfLines={2}>
-          {name}
-        </Text>
+          roundedBottom={'md'}
+          h={45}
+          roundedTop={0}
+          justifyContent={'center'}
+          alignItems={'center'}
+          py={'xs'}>
+          <Text
+            fontWeight={'bold'}
+            fontSize={'sm'}
+            color={'white'}
+            numberOfLines={2}
+            textAlign={'center'}>
+            {name}
+          </Text>
+        </Div>
       </Div>
     </TouchableOpacity>
   );

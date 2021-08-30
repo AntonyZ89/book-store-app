@@ -1,5 +1,6 @@
-import {RouteProp, useRoute} from '@react-navigation/core';
-import React from 'react';
+import {RouteProp, useNavigation, useRoute} from '@react-navigation/core';
+import {StackNavigationProp} from '@react-navigation/stack';
+import React, {useEffect} from 'react';
 import {FlatList} from 'react-native';
 import {Div, Host} from 'react-native-magnus';
 import {RootStackParamList} from '../../App';
@@ -7,9 +8,19 @@ import {BookCard} from '../components';
 import mock from '../service/mock';
 
 type ListBookScreenRouteProp = RouteProp<RootStackParamList, 'ListBooks'>;
+type ListBookScreenStackNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  'ListBooks'
+>;
 
 const ListBooks = () => {
   const {category} = useRoute<ListBookScreenRouteProp>().params || {};
+
+  const navigation = useNavigation<ListBookScreenStackNavigationProp>();
+
+  useEffect(() => {
+    navigation.setOptions({title: category?.name || 'Livros'});
+  }, [navigation, category]);
 
   const books = category
     ? mock.books.filter(book => book.category_id === category.id)

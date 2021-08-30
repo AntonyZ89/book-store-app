@@ -17,6 +17,21 @@ const categories: Category[] = [
     name: 'Tecnologia',
     image: images.banner,
   },
+  {
+    id: 4,
+    name: 'Folclore',
+    image: images.banner,
+  },
+  {
+    id: 5,
+    name: 'Contos',
+    image: images.banner,
+  },
+  {
+    id: 6,
+    name: 'Drama',
+    image: images.banner,
+  },
 ];
 
 export default categories;

@@ -17,32 +17,45 @@ const BookCard = ({item}: PROPS) => {
   async function addToCart() {
     await add(item);
 
-    Alert.alert('Carrinho', `${name} adicionado ao carrinho.`);
+    Alert.alert('Carrinho', `O livro "${name}" foi adicionado ao carrinho.`);
   }
 
   return (
-    <Div m={'xs'} w={160} flex={0.5}>
+    <Div
+      m={'xs'}
+      p={'xs'}
+      bg={'blue600'}
+      w={200}
+      flex={0.5}
+      rounded={'md'}
+      overflow={'hidden'}>
       <TouchableOpacity onPress={addToCart}>
-        <Image height={150} source={image} roundedTop={'md'} />
-        <Text
-          w={'100%'}
-          py={'xs'}
-          fontWeight={'bold'}
-          fontSize={'md'}
+        <Image height={150} source={image} rounded={'md'} />
+
+        <Div
           bg={'blue600'}
-          color={'white'}
-          textAlign={'center'}>
-          {name}
-        </Text>
+          h={45}
+          p={'md'}
+          justifyContent={'center'}
+          alignItems={'center'}
+          py={'xs'}>
+          <Text
+            fontWeight={'bold'}
+            fontSize={'md'}
+            color={'white'}
+            textAlign={'center'}
+            numberOfLines={2}>
+            {name}
+          </Text>
+        </Div>
+
         <NumberFormat
           value={price}
-          bg={'blue500'}
-          color={'white'}
+          bg={'white'}
           fontWeight={'bold'}
           textAlign={'center'}
           py={'xs'}
-          roundedTop={0}
-          roundedBottom={'md'}
+          rounded={'md'}
         />
       </TouchableOpacity>
     </Div>

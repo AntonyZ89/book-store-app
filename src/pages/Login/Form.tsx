@@ -39,10 +39,10 @@ const Form = () => {
     await sleep(3);
 
     const user = mock.users.find(
-      u => u.email === values.email && u.password === values.password,
+      u =>
+        u.email === values.email.toLowerCase() &&
+        u.password === values.password,
     );
-
-    mock.users.map(i => console.log(i));
 
     if (user) {
       login(user);

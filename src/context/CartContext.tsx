@@ -73,6 +73,9 @@ const CartProvider: React.FC = ({children}) => {
       return;
     }
 
+    setLoading(true);
+    await sleep(1);
+
     (item.count as number)--;
 
     if (item.count) {
@@ -84,6 +87,8 @@ const CartProvider: React.FC = ({children}) => {
 
       setItems(_items);
     }
+
+    setLoading(false);
   }
 
   function clear() {

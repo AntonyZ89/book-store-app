@@ -17,9 +17,18 @@ const CartItemCard = ({item}: PROPS) => {
   return (
     <Div bg={'gray400'} my={'md'} p={'md'} rounded={'md'} flexDir={'row'}>
       <Image source={image} w={100} h={100} rounded={'md'} mr={'md'} />
-      <Div justifyContent={'center'} flex={1}>
-        <Text>{name}</Text>
-        <NumberFormat value={price} />
+      <Div justifyContent={'space-between'} flex={1}>
+        <Text fontSize={'lg'} fontWeight={'bold'} numberOfLines={3}>
+          {name}
+        </Text>
+        <NumberFormat
+          p={'xs'}
+          bg={'white'}
+          mr={'md'}
+          rounded={'md'}
+          value={price}
+          fontWeight={'bold'}
+        />
       </Div>
       <Div
         flex={0.2}

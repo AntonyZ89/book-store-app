@@ -10,9 +10,11 @@ const NumberFormat = ({value, ...props}: PROPS) => {
   return (
     <NumberFormatBase
       value={value}
-      thousandSeparator={true}
+      decimalSeparator={','}
       displayType={'text'}
       prefix={'R$ '}
+      decimalScale={2}
+      fixedDecimalScale={true}
       renderText={result => <Text {...props}>{result}</Text>}
     />
   );

@@ -14,7 +14,11 @@ const CartIcon = () => {
   const {count} = useCart();
 
   return (
-    <Button bg={'transparent'} onPress={() => navigation.navigate('Cart')}>
+    <Button
+      bg={'transparent'}
+      alignSelf={'flex-end'}
+      mr={'md'}
+      onPress={() => navigation.navigate('Cart')}>
       <Div
         bg={'black'}
         rounded={'circle'}
