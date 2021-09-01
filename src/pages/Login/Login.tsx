@@ -1,13 +1,13 @@
 import React from 'react';
-import {ScrollView, StyleSheet} from 'react-native';
-import {defaultTheme, Div, Text} from 'react-native-magnus';
+import {SafeAreaView, ScrollView, StyleSheet} from 'react-native';
+import {defaultTheme, Div, StatusBar, Text} from 'react-native-magnus';
 import {Icon} from '../../components';
-import Container from '../../components/Container';
 import Form from './Form';
 
 const Login = () => {
   return (
-    <Container>
+    <SafeAreaView style={styles.container}>
+      <StatusBar barStyle={'dark-content'} backgroundColor={'indigo100'} />
       <ScrollView contentContainerStyle={styles.scrollview}>
         <Div flex={1} justifyContent={'center'}>
           <Div mb={'xl'}>
@@ -23,11 +23,15 @@ const Login = () => {
           <Form />
         </Div>
       </ScrollView>
-    </Container>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: defaultTheme.colors?.indigo100,
+  },
   scrollview: {
     margin: defaultTheme.spacing?.xl,
     flex: 1,

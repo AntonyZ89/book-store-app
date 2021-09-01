@@ -15,7 +15,7 @@ const CartItemCard = ({item}: PROPS) => {
   const {add, remove} = useCart();
 
   return (
-    <Div bg={'gray400'} my={'md'} p={'md'} rounded={'md'} flexDir={'row'}>
+    <Div bg={'gray400'} mt={'md'} p={'md'} rounded={'md'} flexDir={'row'}>
       <Image source={image} w={100} h={100} rounded={'md'} mr={'md'} />
       <Div justifyContent={'space-between'} flex={1}>
         <Text fontSize={'lg'} fontWeight={'bold'} numberOfLines={3}>

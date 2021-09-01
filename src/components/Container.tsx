@@ -1,13 +1,12 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import {defaultTheme, Host} from 'react-native-magnus';
-import {SafeAreaView} from 'react-native-safe-area-context';
+import {defaultTheme, Div, Host} from 'react-native-magnus';
 
 const Container: React.FC = ({children}) => {
   return (
-    <SafeAreaView style={styles.container}>
+    <Div style={styles.container}>
       <Host>{children}</Host>
-    </SafeAreaView>
+    </Div>
   );
 };
 

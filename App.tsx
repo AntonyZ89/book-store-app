@@ -12,7 +12,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
 
-import {StatusBar, ThemeProvider} from 'react-native-magnus';
+import {ThemeProvider} from 'react-native-magnus';
 import App from './src/App';
 import {CartProvider} from './src/context/CartContext';
 import {ListBooks, Login} from './src/pages';
@@ -38,7 +38,6 @@ const Main = () => {
   return (
     <SafeAreaProvider>
       <ThemeProvider>
-        <StatusBar barStyle={'dark-content'} />
         <NavigationContainer>
           <ModalProvider>
             <CartProvider>
@@ -56,7 +55,10 @@ const Main = () => {
                   />
 
                   <Stack.Screen
-                    options={{headerShown: false}}
+                    options={{
+                      headerShown: false,
+                      gestureEnabled: false,
+                    }}
                     name="App"
                     component={App}
                   />

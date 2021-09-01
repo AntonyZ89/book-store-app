@@ -1,7 +1,7 @@
 import React from 'react';
 import {Alert, FlatList} from 'react-native';
-import {Button, Div, Host, Text} from 'react-native-magnus';
-import {CartItemCard, Hr, NumberFormat} from '../../components';
+import {Button, Div, Text} from 'react-native-magnus';
+import {CartItemCard, Container, Hr, NumberFormat} from '../../components';
 import {useCart} from '../../context/CartContext';
 import {Book} from '../../types';
 
@@ -23,29 +23,27 @@ const Cart = ({items, total}: PROPS) => {
   }
 
   return (
-    <>
-      <Host>
-        <Div p={'md'}>
-          <FlatList
-            keyExtractor={item => item.id.toString()}
-            data={items}
-            renderItem={({item}) => <CartItemCard item={item} />}
-          />
+    <Container>
+      <Div px={'md'} flex={1}>
+        <FlatList
+          keyExtractor={item => item.id.toString()}
+          data={items}
+          renderItem={({item}) => <CartItemCard item={item} />}
+        />
 
-          <Hr />
+        <Hr />
 
-          <Div flexDir={'row'} justifyContent={'space-between'}>
-            <Text fontSize={'lg'} fontWeight={'bold'}>
-              Total
-            </Text>
-            <NumberFormat value={total} fontSize={'lg'} fontWeight={'bold'} />
-          </Div>
+        <Div flexDir={'row'} justifyContent={'space-between'}>
+          <Text fontSize={'lg'} fontWeight={'bold'}>
+            Total
+          </Text>
+          <NumberFormat value={total} fontSize={'lg'} fontWeight={'bold'} />
         </Div>
-      </Host>
+      </Div>
       <Button block m={'md'} bg={'indigo400'} onPress={checkout}>
         Finalizar compra
       </Button>
-    </>
+    </Container>
   );
 };
 
