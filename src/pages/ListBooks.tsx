@@ -2,9 +2,9 @@ import {RouteProp, useNavigation, useRoute} from '@react-navigation/core';
 import {StackNavigationProp} from '@react-navigation/stack';
 import React, {useEffect} from 'react';
 import {FlatList} from 'react-native';
-import {RootStackParamList} from '../../App';
-import {BookCard, Container} from '../components';
-import mock from '../service/mock';
+import {RootStackParamList} from '~/App';
+import {BookCard, Container} from '~/components';
+import mock from '~/service/mock';
 
 type ListBookScreenRouteProp = RouteProp<RootStackParamList, 'ListBooks'>;
 type ListBookScreenStackNavigationProp = StackNavigationProp<

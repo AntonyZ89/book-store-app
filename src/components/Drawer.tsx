@@ -1,6 +1,6 @@
 import React from 'react';
 import {Drawer as DrawerBase, Header} from 'react-native-magnus';
-import {DrawerButton, DrawerLogout, DrawerUser} from './';
+import {DrawerButton, DrawerLogout, DrawerUser} from '~/components';
 
 const Drawer: typeof DrawerBase = React.forwardRef((props, ref) => (
   <DrawerBase ref={ref} {...props} p={'md'}>
@@ -11,7 +11,7 @@ const Drawer: typeof DrawerBase = React.forwardRef((props, ref) => (
     <DrawerButton
       onPress={() => ref.current.close()}
       icon={'home'}
-      route={'App'}
+      route={'Home'}
       label={'Início'}
     />
     <DrawerButton

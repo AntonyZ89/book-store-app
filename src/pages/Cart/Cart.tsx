@@ -1,9 +1,9 @@
 import React from 'react';
 import {Alert, FlatList} from 'react-native';
 import {Button, Div, Text} from 'react-native-magnus';
-import {CartItemCard, Container, Hr, NumberFormat} from '../../components';
-import {useCart} from '../../context/CartContext';
-import {Book} from '../../types';
+import {CartItemCard, Container, Hr, NumberFormat} from '~/components';
+import {useCart} from '~/context/CartContext';
+import {Book} from '~/types';
 
 type PROPS = {
   items: Book[];

@@ -1,6 +1,6 @@
 import React from 'react';
 import {SafeAreaView} from 'react-native';
-import {useCart} from '../../context/CartContext';
+import {useCart} from '~/context/CartContext';
 import Cart from './Cart';
 import CartEmpty from './CartEmpty';
 

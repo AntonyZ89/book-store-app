@@ -1,12 +1,12 @@
 import React from 'react';
 import {Button, Div, Input, Text} from 'react-native-magnus';
-import {Hr} from '../../components';
+import {Hr} from '~/components';
 import {Formik, FormikHelpers} from 'formik';
 import * as yup from 'yup';
-import {useAuth} from '../../context/AuthContext';
-import mock from '../../service/mock';
-import {useModal} from '../../context/ModalContext';
-import sleep from '../../utils/sleep';
+import {useAuth} from '~/context/AuthContext';
+import mock from '~/service/mock';
+import {useModal} from '~/context/ModalContext';
+import sleep from '~/utils/sleep';
 
 const loginValidationSchema = yup.object().shape({
   email: yup

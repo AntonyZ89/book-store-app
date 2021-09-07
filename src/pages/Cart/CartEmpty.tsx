@@ -1,6 +1,6 @@
 import React from 'react';
 import {Div, Text} from 'react-native-magnus';
-import {Icon} from '../../components';
+import {Icon} from '~/components';
 
 const CartEmpty = () => {
   return (

@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, {createContext, useContext, useEffect, useState} from 'react';
-import {Book} from '../types';
-import sleep from '../utils/sleep';
+import {Book} from '~/types';
+import sleep from '~/utils/sleep';
 import {useModal} from './ModalContext';
 
 type CONTEXT_PROPS = {

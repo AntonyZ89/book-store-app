@@ -27,7 +27,7 @@ const ModalProvider: React.FC = ({children}) => {
           alignItems={'center'}>
           <ActivityIndicator
             size={'large'}
-            color={defaultTheme.colors.indigo500}
+            color={defaultTheme.colors?.indigo500}
           />
           <Text mt="lg" fontSize={'xl'} fontWeight={'bold'}>
             Carregando...

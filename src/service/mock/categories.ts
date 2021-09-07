@@ -1,5 +1,5 @@
-import images from '../../assets/images';
-import {Category} from '../../types';
+import images from '~/assets/images';
+import {Category} from '~/types';
 
 const categories: Category[] = [
   {

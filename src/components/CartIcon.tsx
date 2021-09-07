@@ -3,8 +3,8 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import React from 'react';
 import {Button, Div, Text} from 'react-native-magnus';
 import {Icon} from '.';
-import {RootStackParamList} from '../../App';
-import {useCart} from '../context/CartContext';
+import {RootStackParamList} from '~/App';
+import {useCart} from '~/context/CartContext';
 
 type CartScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Cart'>;
 

@@ -2,8 +2,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {CompositeNavigationProp, useNavigation} from '@react-navigation/core';
 import {StackNavigationProp} from '@react-navigation/stack';
 import React, {createContext, useContext, useEffect, useState} from 'react';
-import {RootStackParamList} from '../../App';
-import {User} from '../types';
+import {RootStackParamList} from '~/App';
+import {User} from '~/types';
 import {useCart} from './CartContext';
 
 type CONTEXT_PROPS = {
@@ -19,9 +19,9 @@ const init: CONTEXT_PROPS = {
   logout: () => {},
 };
 
-type MainScreenNavigationProp = CompositeNavigationProp<
+type AppScreenNavigationProp = CompositeNavigationProp<
   StackNavigationProp<RootStackParamList, 'Login'>,
-  StackNavigationProp<RootStackParamList, 'App'>
+  StackNavigationProp<RootStackParamList, 'Home'>
 >;
 
 const AuthContext = createContext<CONTEXT_PROPS>(init);
@@ -31,7 +31,7 @@ const AuthProvider: React.FC = ({children}) => {
   const [signed, setSigned] = useState<boolean>(false);
   const {clear} = useCart();
 
-  const navigation = useNavigation<MainScreenNavigationProp>();
+  const navigation = useNavigation<AppScreenNavigationProp>();
 
   // load
   useEffect(() => {
@@ -51,7 +51,7 @@ const AuthProvider: React.FC = ({children}) => {
       AsyncStorage.removeItem('@auth');
     }
 
-    navigation.navigate(signed ? 'App' : 'Login');
+    navigation.navigate(signed ? 'Home' : 'Login');
   }, [user, signed, navigation]);
 
   function login(u: User) {

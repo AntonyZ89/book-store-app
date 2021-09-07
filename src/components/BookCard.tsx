@@ -2,8 +2,8 @@ import React from 'react';
 import {Alert, TouchableOpacity} from 'react-native';
 import {Div, Image, Text} from 'react-native-magnus';
 import {NumberFormat} from '.';
-import {useCart} from '../context/CartContext';
-import {Book} from '../types';
+import {useCart} from '~/context/CartContext';
+import {Book} from '~/types';
 
 type PROPS = {
   item: Book;

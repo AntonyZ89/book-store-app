@@ -2,8 +2,8 @@ import {useNavigation} from '@react-navigation/core';
 import {StackNavigationProp} from '@react-navigation/stack';
 import React from 'react';
 import {Button} from 'react-native-magnus';
-import {RootStackParamList} from '../../../../App';
-import {Icon} from '../../../components';
+import {RootStackParamList} from '~/App';
+import {Icon} from '~/components';
 
 type PROPS = {
   route?: keyof RootStackParamList;

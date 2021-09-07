@@ -1,7 +1,7 @@
 import React from 'react';
 import {SafeAreaView, ScrollView, StyleSheet} from 'react-native';
 import {defaultTheme, Div, StatusBar, Text} from 'react-native-magnus';
-import {Icon} from '../../components';
+import {Icon} from '~/components';
 import Form from './Form';
 
 const Login = () => {

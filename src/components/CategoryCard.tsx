@@ -3,8 +3,8 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import React from 'react';
 import {TouchableOpacity} from 'react-native';
 import {Div, Image, Text} from 'react-native-magnus';
-import {RootStackParamList} from '../../App';
-import {Category} from '../types';
+import {RootStackParamList} from '~/App';
+import {Category} from '~/types';
 
 type PROPS = {
   item: Category;

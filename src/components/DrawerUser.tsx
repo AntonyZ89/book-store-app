@@ -1,7 +1,7 @@
 import React from 'react';
 import {Div, Text} from 'react-native-magnus';
-import {Icon} from '../../../components';
-import {useAuth} from '../../../context/AuthContext';
+import {Icon} from '~/components';
+import {useAuth} from '~/context/AuthContext';
 
 const DrawerUser = () => {
   const {user} = useAuth();

@@ -11,8 +11,8 @@ import {
   StatusBar,
   Text,
 } from 'react-native-magnus';
-import {RootStackParamList} from '../../../App';
-import images from '../../assets/images';
+import {RootStackParamList} from '~/App';
+import images from '~/assets/images';
 import {
   BookCard,
   CartIcon,
@@ -20,9 +20,9 @@ import {
   Container,
   Hr,
   Icon,
-} from '../../components';
-import mock from '../../service/mock';
-import Drawer from './components/Drawer';
+} from '~/components';
+import mock from '~/service/mock';
+import Drawer from '~/components/Drawer';
 
 const numColumns = Math.ceil(mock.categories.length / 2);
 
